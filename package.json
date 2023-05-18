@@ -20,7 +20,7 @@
     "dependencies": {
         "@emotion/react": "^11.10.6",
         "@emotion/styled": "^11.10.6",
-        "@logikorinc/logikui": "github:LogikorInc/logikui",
+        "@logikorinc/logikui": "^1.0.3",
         "@material-ui/core": "^4.12.4",
         "@mui/material": "^5.11.16",
         "ag-grid-community": "^29.2.0",
