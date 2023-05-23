@@ -16,13 +16,13 @@ const ShipmentTable = () => {
     const [rowData, setRowData] = useState(); // Set rowData to Array of Objects, one Object per Row
 
     const [columnDefs, setColumnDefs] = useState([
-        {headerName: 'Shipment', field: 'primary_reference', filter: true, cellRenderer: 'cellClickedListener'},
-        {headerName: 'Status',field: 'status'},
-        {headerName: 'Destination',field: 'dest_name'},
-        {headerName: 'Create Date',field: 'create_date', filter: true},
-        {headerName: 'Ship Date',field: 'actual_ship'},
-        {headerName: 'ETA',field: 'target_delivery_early'},
-        {headerName: 'Delivery Date',field: 'actual_delivery'}
+        {headerName: 'Shipment', field: 'primary_reference', filter: true, cellRenderer: 'cellClickedListener', sortable: true, filter: true, floatingFilter: true, flex: 2 },
+        {headerName: 'Status',field: 'status', sortable: true, filter: true, floatingFilter: true, flex: 2 },
+        {headerName: 'Destination',field: 'dest_name', sortable: true, filter: true, floatingFilter: true, flex: 2 },
+        {headerName: 'Create Date',field: 'create_date', sortable: true, filter: true, floatingFilter: true, flex: 2 },
+        {headerName: 'Ship Date',field: 'actual_ship',sortable: true, filter: true, floatingFilter: true, flex: 2 },
+        {headerName: 'ETA',field: 'target_delivery_early',sortable: true, filter: true, floatingFilter: true, flex: 2 },
+        {headerName: 'Delivery Date',field: 'actual_delivery',sortable: true, filter: true, floatingFilter: true, flex: 2 }
         
         
         
@@ -102,7 +102,7 @@ return (
             rowHeight="40"
             ref={gridRef} // Ref for accessing Grid's API
             pagination={true}
-            paginationPageSize={10}
+            paginationPageSize={25}
             rowData={shipments} // Row Data for Rows
  
             columnDefs={columnDefs} // Column Defs for Columns
