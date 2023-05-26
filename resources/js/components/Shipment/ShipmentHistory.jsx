@@ -3,7 +3,7 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import { Paper, MenuItem, IconButton, TextField, Typography } from "@mui/material";
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Unstable_Grid2';
 
 const steps = [
     'Booked',
@@ -13,8 +13,8 @@ const steps = [
 
 export default function HorizontalLabelPositionBelowStepper() {
     return (
-        <Grid container spacing={2} direction="row">
-        <Grid item md={3}>
+        // <Grid container spacing={2} direction="row">
+        // <Grid item xs={12}>
         <Paper style={{ padding: 15, marginBottom: 15 }}>
       <Box sx={{ width: '100%' }}>
         <Stepper activeStep={1} alternativeLabel>
@@ -27,7 +27,7 @@ export default function HorizontalLabelPositionBelowStepper() {
       </Box>
       </Paper>
 
-</Grid>
-</Grid>
+// </Grid>
+// </Grid>
     );
   }

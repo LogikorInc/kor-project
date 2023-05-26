@@ -33,4 +33,12 @@ class ShipmentsController extends Controller
 
 		return $test->toJson();
 	}
+
+	public function GetShipment($id){
+
+		$items = Shipments::where('primary_reference', "=", $id)->get();
+
+		return $items->toJson();
+
+	}
 }

@@ -42,4 +42,5 @@ Route::group(['middleware' => 'auth:sanctum'], function (){
 Route::controller(ShipmentsController::class)->group(function() {
     Route::get('shipments', 'index'); // get all shipments
     Route::get('/shipments/recent', 'GetShipments');
+    Route::get('/shipment-data/{id}', 'GetShipment');
 });

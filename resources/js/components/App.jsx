@@ -10,9 +10,12 @@ import logo from './images/logikor-logo-standard.svg';
 import '../../css/app.css';
 import AppHeader from './AppHeader';
 
+import MyContextProvider from '../contexts/MyContext';
+
 function App() {
   return (
-      <React.Fragment>
+    <MyContextProvider>
+      {/* <React.Fragment> */}
           <BrowserRouter>
           <Layout 
           logo={logo}
@@ -31,7 +34,8 @@ function App() {
               />
               </Layout>
           </BrowserRouter>
-      </React.Fragment>
+      {/* </React.Fragment> */}
+      </MyContextProvider>
   );
 }
 

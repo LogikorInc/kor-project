@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo, useCallback} from 'react';
+import React, { useState, useRef, useEffect, useMemo, useCallback, useContext} from 'react';
 import ReactDOM, { render } from 'react-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -6,13 +6,19 @@ import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
 import 'ag-grid-community/styles/ag-theme-material.css'; // Optional theme CSS
 import { AgGridReact } from 'ag-grid-react'; // the AG Grid React Component
 
+import { MyContext } from '../../contexts/MyContext';
+
 
 
 const ShipmentTable = () => {
 
+    const { getShipments, rootState } = useContext(MyContext);
+
+    const { shipments } = rootState;
+
     const gridRef = useRef(); // Optional - for accessing Grid's API
 
-    const [shipments, setShipments] = useState([]);
+    const [shipmentData, setShipmentData] = useState([]);
     const [rowData, setRowData] = useState(); // Set rowData to Array of Objects, one Object per Row
 
     const [columnDefs, setColumnDefs] = useState([
@@ -28,23 +34,27 @@ const ShipmentTable = () => {
         
       ]);
 
-    const getShipments = () => {
-        try {
-            axios.get('/api/shipments/recent').then(response => {
-                const shipments = response.data;
-                console.log(shipments);
-                setShipments(shipments);
-            })
+    // const getShipments = () => {
+    //     try {
+    //         axios.get('/api/shipments/recent').then(response => {
+    //             const shipments = response.data;
+    //             console.log(shipments);
+    //             setShipments(shipments);
+    //         })
 
-        } catch (e) {
-            console.log(e);
-        }
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
         
-    };
+    // };
 
     useEffect(() => {
         getShipments();
     }, []);
+
+    useEffect(() => {
+        setShipmentData(shipments);
+    }, [shipments])
 
     
 
@@ -103,7 +113,7 @@ return (
             ref={gridRef} // Ref for accessing Grid's API
             pagination={true}
             paginationPageSize={25}
-            rowData={shipments} // Row Data for Rows
+            rowData={shipmentData} // Row Data for Rows
  
             columnDefs={columnDefs} // Column Defs for Columns
             defaultColDef={defaultColDef} // Default Column Properties
